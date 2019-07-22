@@ -23,13 +23,18 @@ app.post('/login/api/login', function(req, res){
     }
 
     var customer = {};
+    var valid;
     customer.email = req.body.email;
     customer.upwd = req.body.upwd;
-    console.log(req.body.upwd)
-    if(req.body.email == 'abc@com.au' && req.body.upwd == '123'){
-        customer.valid = true;
+    if(req.body.email == 'chimmy@com.au' && req.body.upwd == 'chim'){
+        valid = '{"ok":true}';
+    }  else if(req.body.email == 'tata@com.au' && req.body.upwd == 'tata'){
+        valid = '{"ok":true}';
+    } else if(req.body.email == 'mang@com.au' && req.body.upwd == 'mang'){
+        valid = '{"ok":true}';
     } else {
-        customer.valid = false;
+        valid = '{"ok":false, "errors":{}}';
     }
-    res.send(customer);
+    valid = JSON.stringify(valid)
+    res.send(valid);
 });

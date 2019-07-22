@@ -18,8 +18,11 @@ $(document).ready(function() {
             url : window.location + "/api/login",
             data : JSON.stringify(formData),
             dataType : 'json',
-            success : function(customer) {
-                if (customer.valid == true) {
+            success : function(valid) {
+                console.log(valid)
+                var status = JSON.parse(valid);
+                console.log(status)
+                if ( status.ok == true) {
                     $("#postResultDiv").html("<p>" + "Login Successfully! " + "Email Address: " + customer.email + "</br>" +
                     "Password: " + customer.upwd + "</br>" + "Valid User: " + customer.valid + "</p>");
                 } else {
