@@ -1,9 +1,7 @@
 $(document).ready(function() {
-    console.log("ready!")
     $('#loginform').submit(function(event){
         event.preventDefault();
         ajaxPost();
-        console.log("done!")
     });
 
     function ajaxPost() {
@@ -19,14 +17,17 @@ $(document).ready(function() {
             data : JSON.stringify(formData),
             dataType : 'json',
             success : function(valid) {
-                console.log(valid)
                 var status = JSON.parse(valid);
-                console.log(status)
                 if ( status.ok == true) {
-                    $("#postResultDiv").html("<p>" + "Login Successfully! " + "Email Address: " + customer.email + "</br>" +
-                    "Password: " + customer.upwd + "</br>" + "Valid User: " + customer.valid + "</p>");
+                    $("#postResultDiv").removeClass("hidemessage");
+                    $("#postResultDiv").addClass("showmessage");
+                    $("#errorMsg").addClass("hidemessage");
+                    $("#errorMsg").removeClass("showmessage");
                 } else {
-                    $("#postResultDiv").html("<p>Error logging in </p>");
+                    $("#errorMsg").removeClass("hidemessage");
+                    $("#errorMsg").addClass("showmessage");
+                    $("#postResultDiv").addClass("hidemessage");
+                    $("#postResultDiv").removeClass("showmessage");
                 }
             },
             error : function(e){
