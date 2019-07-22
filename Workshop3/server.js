@@ -25,9 +25,9 @@ app.post('/login/api/login', function(req, res){
     var customer = {};
     customer.email = req.body.email;
     customer.upwd = req.body.upwd;
-    console.log(customer)
-    if (customer.email == "abc@com.au" && customer.upwd == "123"){
-        customer.valid == true;
+    console.log(req.body.upwd)
+    if(req.body.email == 'abc@com.au' && req.body.upwd == '123'){
+        customer.valid = true;
     } else {
         customer.valid = false;
     }

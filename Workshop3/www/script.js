@@ -19,12 +19,11 @@ $(document).ready(function() {
             data : JSON.stringify(formData),
             dataType : 'json',
             success : function(customer) {
-              
-                if(customer.valid == true) {
-                    $("#postResultDiv").html("<p>" + "Login Successfully!" + "Email Address: " + customer.email + "</br>" +
+                if (customer.valid == true) {
+                    $("#postResultDiv").html("<p>" + "Login Successfully! " + "Email Address: " + customer.email + "</br>" +
                     "Password: " + customer.upwd + "</br>" + "Valid User: " + customer.valid + "</p>");
                 } else {
-                    $("#postResultDiv").html("<p>Error</p>")
+                    $("#postResultDiv").html("<p>Error logging in </p>");
                 }
             },
             error : function(e){
